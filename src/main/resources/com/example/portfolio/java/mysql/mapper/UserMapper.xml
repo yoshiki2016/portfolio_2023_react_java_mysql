@@ -4,5 +4,8 @@
     <select id="findUsers" resultType="com.example.portfolio.java.mysql.entity.User">
         SELECT * FROM users;
     </select>
+    <select id="login" resultType="com.example.portfolio.java.mysql.entity.User">
+        SELECT * FROM users Where user_name=#{username} And password=#{password};
+    </select>
 </mapper>
 
