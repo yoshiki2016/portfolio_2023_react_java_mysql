@@ -1,12 +1,12 @@
-import React from 'react';
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme/theme";
+import { Login } from "./components/pages/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p> React Java MySQLのポートフォリオ </p>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Login />
+    </ChakraProvider>
   );
 }
 
