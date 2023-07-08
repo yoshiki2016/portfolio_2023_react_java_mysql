@@ -1,7 +1,7 @@
 package com.example.portfolio.java.mysql.controller;
 
 import com.example.portfolio.java.mysql.entity.User;
-import com.example.portfolio.java.mysql.entity.UserForm;
+import com.example.portfolio.java.mysql.form.UserForm;
 import com.example.portfolio.java.mysql.form.LoginForm;
 import com.example.portfolio.java.mysql.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
 
 @CrossOrigin("http://localhost:3000")

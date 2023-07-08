@@ -1,4 +1,4 @@
-package com.example.portfolio.java.mysql.entity;
+package com.example.portfolio.java.mysql.form;
 
 import java.util.Objects;
 
