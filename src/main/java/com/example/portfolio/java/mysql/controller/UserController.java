@@ -22,11 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public List<User> findUsers() {
-        return userService.findUsers();
-    }
-
     @PostMapping("/user/login")
     public LoginResponse login(@RequestBody @Validated LoginForm loginForm) {
         return userService.login(loginForm.getUsername(), loginForm.getPassword());
