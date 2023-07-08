@@ -19,6 +19,14 @@ public class User {
         this.email = email;
     }
 
+    public User(String givenName, String familyName, String userName, String password, String email) {
+        this.givenName = givenName;
+        this.familyName = familyName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
