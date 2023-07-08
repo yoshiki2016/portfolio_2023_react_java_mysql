@@ -17,11 +17,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUsers(){
-        return userMapper.findUsers();
-    }
-
-    @Override
     public LoginResponse login(String username, String password){
         Optional<User> loginUser = userMapper.login(username, password);
         if(loginUser.isPresent()){

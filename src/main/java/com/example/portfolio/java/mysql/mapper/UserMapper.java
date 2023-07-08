@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Mapper
 public interface UserMapper {
-    List<User> findUsers();
-
     Optional<User> login(String username, String password);
 }
