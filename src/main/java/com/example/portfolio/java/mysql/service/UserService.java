@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UserService {
     LoginResponse login(String username, String password);
+    User userRegister(String givenName, String familyName, String username, String password, String email);
 }

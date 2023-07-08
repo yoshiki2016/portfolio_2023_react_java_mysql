@@ -1,0 +1,19 @@
+users:
+- id: 1
+  given_name: "琴美"
+  family_name: "竹内"
+  user_name: "k_kotomi"
+  password: "zE3DnhXx"
+  email: "kotomitakeuchi@ppgpbkveb.ocd"
+- id: 2
+  given_name: "港一"
+  family_name: "河合"
+  user_name: "k_kawai"
+  password: "W-DSVjma"
+  email: "kouichikawai@ifkmjxhuh.kt"
+- id: 3
+  given_name: "季歩"
+  family_name: "守屋柚"
+  user_name: "y_moriyama"
+  password: "ssv5mnOJ"
+  email: "yukiho_moriya@yjuqtxeos.pdl"

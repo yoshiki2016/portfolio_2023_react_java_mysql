@@ -1,6 +1,6 @@
 import React, { useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Input, FormControl, FormLabel, VStack, Center } from "@chakra-ui/react";
+import { Input, FormControl, FormLabel, VStack, Center, InputGroup, InputRightElement, Button } from "@chakra-ui/react";
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -14,6 +14,7 @@ export const Login: React.FC = memo(() => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value); };
 
   const handleLogin = () => { login(username, password) };
+  const userRegister = () => navigate("/user");
 
   return (
     <Center height="100vh">
@@ -31,6 +32,12 @@ export const Login: React.FC = memo(() => {
           onClick={handleLogin}
           isLoading={isLoading}>
           ログイン
+        </PrimaryButton>
+        <PrimaryButton
+          isDisabled={false}
+          onClick={userRegister}
+          isLoading={false}>
+          アカウント作成
         </PrimaryButton>
       </VStack>
     </Center>
