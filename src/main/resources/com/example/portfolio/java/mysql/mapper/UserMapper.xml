@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.portfolio.java.mysql.mapper.UserMapper">
     <select id="login" resultType="com.example.portfolio.java.mysql.entity.User">
-        Select * FROM users Where user_name=#{username} And password=#{password};
+        Select * FROM users Where user_name=#{userName} And password=#{password};
     </select>
     <insert id="userRegister" parameterType="com.example.portfolio.java.mysql.entity.User" useGeneratedKeys="true" keyProperty="id">
         Insert Into users (given_name, family_name, user_name, password, email)
-            Values (#{givenName}, #{familyName}, #{username}, #{password}, #{email});
+            Values (#{givenName}, #{familyName}, #{userName}, #{password}, #{email});
     </insert>
 </mapper>

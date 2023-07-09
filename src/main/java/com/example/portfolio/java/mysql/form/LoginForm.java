@@ -1,17 +1,17 @@
 package com.example.portfolio.java.mysql.form;
 
 public class LoginForm {
-    private String username;
+    private String userName;
 
     private String password;
 
-    public LoginForm(String username, String password) {
-        this.username = username;
+    public LoginForm(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public String getPassword() {

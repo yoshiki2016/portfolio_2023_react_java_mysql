@@ -12,13 +12,13 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
-    private UserServiceImpl(UserMapper userMapper) {
+    public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
 
     @Override
-    public LoginResponse login(String username, String password){
-        Optional<User> loginUser = userMapper.login(username, password);
+    public LoginResponse login(String userName, String password){
+        Optional<User> loginUser = userMapper.login(userName, password);
         if(loginUser.isPresent()){
             int userId = loginUser.get().getId();
             return new LoginResponse(userId, true);
@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User userRegister(String givenName, String familyName, String username, String password, String email){
-        User user = new User(givenName, familyName, username, password, email);
+    public User userRegister(String givenName, String familyName, String userName, String password, String email){
+        User user = new User(givenName, familyName, userName, password, email);
         userMapper.userRegister(user);
         return user;
     }

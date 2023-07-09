@@ -46,7 +46,7 @@ public class UserMapperTest {
     @Test
     @DataSet(value = "user/userList.yml")
     @Transactional
-    public void userテーブルに存在するusernameとpasswordのペアが存在する時Userを返却すること() {
+    public void userテーブルに存在するuserNameとpasswordのペアが存在する時Userを返却すること() {
         Optional<User> user = userMapper.login("k_kawai", "W-DSVjma");
         assertThat(user).contains(
                 new User(2, "港一", "河合", "k_kawai", "W-DSVjma", "kouichikawai@ifkmjxhuh.kt")
@@ -56,14 +56,14 @@ public class UserMapperTest {
     @Test
     @DataSet(value = "user/userList.yml")
     @Transactional
-    public void userテーブルに存在しないusernameとpasswordのペアが存在する時Optionalを返却すること() {
+    public void userテーブルに存在しないuserNameとpasswordのペアが存在する時Optionalを返却すること() {
         Optional<User> user = userMapper.login("y_asaka", "Sr0LVDwX");
         assertThat(user).isEmpty();
     }
 
     @Test
     @DataSet(value = "user/userList.yml")
-//    @ExpectedDataSet(value = "user/userCreateList.yml", ignoreCols = "id")
+    @ExpectedDataSet(value = "user/userCreateList.yml", ignoreCols = "id")
     @Transactional
     public void DBにユーザーが追加された際にidがオートインクリメントされること() {
         User user4 = new User("秀加", "山内", "y_hideka", "nm_8BrTv", "hideka28544@epjtdsmc.vyt.edk");
