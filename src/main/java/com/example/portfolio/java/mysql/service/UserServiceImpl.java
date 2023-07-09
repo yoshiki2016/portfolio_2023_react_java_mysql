@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User userRegister(String givenName, String familyName, String username, String password, String email){
         User user = new User(givenName, familyName, username, password, email);
-        return userMapper.userRegister(user);
+        userMapper.userRegister(user);
+        return user;
     }
 }
