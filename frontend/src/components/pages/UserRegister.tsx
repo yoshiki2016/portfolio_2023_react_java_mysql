@@ -6,22 +6,19 @@ import { useUserRegister } from "../../hooks/useUserRegister";
 export const UserRegister: React.FC = memo(() => {
   const [givenName, setGivenName] = useState("");
   const [familyName, setFamilyName] = useState("");
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
 
   const handleGivenNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setGivenName(event.target.value); };
   const handleFamlyNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setFamilyName(event.target.value); };
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUsername(event.target.value); };
+  const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserName(event.target.value); };
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value); };
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); };
 
-  // useUserRegisterから受け取るようにする。
-  // const isLoading = false;
-  // const userRegister = () => alert("ユーザー登録");
   const { userRegister, isLoading } = useUserRegister();
-  const onClickUserRegister = () => userRegister({ givenName, familyName, username, password, email });
+  const onClickUserRegister = () => userRegister({ givenName, familyName, userName, password, email });
   return (
     <>
       <Center height="100vh">
@@ -36,7 +33,7 @@ export const UserRegister: React.FC = memo(() => {
           </FormControl>
           <FormControl>
             <FormLabel>ユーザー名</FormLabel>
-            <Input type="text" value={username} onChange={handleUsernameChange} />
+            <Input type="text" value={userName} onChange={handleUserNameChange} />
           </FormControl>
           <FormControl>
             <FormLabel>パスワード</FormLabel>
@@ -49,7 +46,7 @@ export const UserRegister: React.FC = memo(() => {
           <PrimaryButton
             isDisabled={
               familyName === "" || givenName === "" ||
-              username === "" || password === "" || email === ""
+              userName === "" || password === "" || email === ""
             }
             onClick={onClickUserRegister}
             isLoading={isLoading}>
