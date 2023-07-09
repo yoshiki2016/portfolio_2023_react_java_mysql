@@ -11,7 +11,6 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const login = useCallback((userName: string, password: string) => {
-    console.log("ログイン処理実施");
     setIsLoading(true);
     axios.post("http://localhost:8080/user/login", {
       userName: userName,
