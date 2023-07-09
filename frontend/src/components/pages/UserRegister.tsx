@@ -1,6 +1,7 @@
-import React, { memo, useState } from 'react';
-import { Center, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
-import { PrimaryButton } from '../atoms/button/PrimaryButton';
+import React, { memo, useState } from "react";
+import { Center, FormControl, FormLabel, Input, VStack } from "@chakra-ui/react";
+import { PrimaryButton } from "../atoms/button/PrimaryButton";
+import { useUserRegister } from "../../hooks/useUserRegister";
 
 export const UserRegister: React.FC = memo(() => {
   const [givenName, setGivenName] = useState("");
@@ -17,8 +18,10 @@ export const UserRegister: React.FC = memo(() => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); };
 
   // useUserRegisterから受け取るようにする。
-  const isLoading = false;
-  const userRegister = () => alert("ユーザー登録");
+  // const isLoading = false;
+  // const userRegister = () => alert("ユーザー登録");
+  const { userRegister, isLoading } = useUserRegister();
+  const onClickUserRegister = () => userRegister({ givenName, familyName, username, password, email });
   return (
     <>
       <Center height="100vh">
@@ -48,7 +51,7 @@ export const UserRegister: React.FC = memo(() => {
               familyName === "" || givenName === "" ||
               username === "" || password === "" || email === ""
             }
-            onClick={userRegister}
+            onClick={onClickUserRegister}
             isLoading={isLoading}>
             ユーザー登録
           </PrimaryButton>

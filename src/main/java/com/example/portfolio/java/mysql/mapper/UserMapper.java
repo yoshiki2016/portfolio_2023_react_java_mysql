@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Mapper
 public interface UserMapper {
-    Optional<User> login(String username, String password);
+    Optional<User> login(String userName, String password);
     void userRegister(User user);
 }

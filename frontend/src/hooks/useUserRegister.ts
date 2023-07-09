@@ -11,7 +11,7 @@ type Props = {
   email: string;
 }
 
-export const useUserRegister = (props: Props) => {
+export const useUserRegister = () => {
   const navigate = useNavigate();
   const { showMessage } = useMessage();
   const [isLoading, setIsLoading] = useState(false);

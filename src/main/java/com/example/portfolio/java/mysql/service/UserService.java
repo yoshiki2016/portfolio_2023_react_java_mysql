@@ -6,6 +6,6 @@ import com.example.portfolio.java.mysql.entity.User;
 import java.util.List;
 
 public interface UserService {
-    LoginResponse login(String username, String password);
-    User userRegister(String givenName, String familyName, String username, String password, String email);
+    LoginResponse login(String userName, String password);
+    User userRegister(String givenName, String familyName, String userName, String password, String email);
 }

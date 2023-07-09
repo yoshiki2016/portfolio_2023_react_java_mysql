@@ -20,13 +20,13 @@ public class UserController {
 
     private final UserService userService;
 
-    private UserController(UserService userService){
+    public UserController(UserService userService){
         this.userService = userService;
     }
 
     @PostMapping("/user/login")
     public LoginResponse login(@RequestBody LoginForm loginForm) {
-        return userService.login(loginForm.getUsername(), loginForm.getPassword());
+        return userService.login(loginForm.getUserName(), loginForm.getPassword());
     }
 
     @PostMapping("/user/register")
