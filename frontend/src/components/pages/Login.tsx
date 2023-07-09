@@ -6,14 +6,14 @@ import { useAuth } from "../../hooks/useAuth";
 
 export const Login: React.FC = memo(() => {
   const { isLoading, login } = useAuth();
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUsername(event.target.value); };
+  const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserName(event.target.value); };
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value); };
 
-  const handleLogin = () => { login(username, password) };
+  const handleLogin = () => { login(userName, password) };
   const userRegister = () => navigate("/user");
 
   return (
@@ -21,14 +21,14 @@ export const Login: React.FC = memo(() => {
       <VStack spacing={4}>
         <FormControl>
           <FormLabel>ユーザー名</FormLabel>
-          <Input type="text" value={username} onChange={handleUsernameChange} />
+          <Input type="text" value={userName} onChange={handleUserNameChange} />
         </FormControl>
         <FormControl>
           <FormLabel>パスワード</FormLabel>
           <Input type="password" value={password} onChange={handlePasswordChange} />
         </FormControl>
         <PrimaryButton
-          isDisabled={username === "" || password === ""}
+          isDisabled={userName === "" || password === ""}
           onClick={handleLogin}
           isLoading={isLoading}>
           ログイン
