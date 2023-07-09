@@ -6,23 +6,23 @@ public class User {
     private int id;
     private String givenName;
     private String familyName;
-    private String userName;
+    private String username;
     private String password;
     private String email;
 
-    public User(int id, String givenName, String familyName, String userName, String password, String email) {
+    public User(int id, String givenName, String familyName, String username, String password, String email) {
         this.id = id;
         this.givenName = givenName;
         this.familyName = familyName;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.email = email;
     }
 
-    public User(String givenName, String familyName, String userName, String password, String email) {
+    public User(String givenName, String familyName, String username, String password, String email) {
         this.givenName = givenName;
         this.familyName = familyName;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.email = email;
     }
@@ -31,26 +31,13 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
-        if (id != user.id) return false;
-        if (!Objects.equals(givenName, user.givenName)) return false;
-        if (!Objects.equals(familyName, user.familyName)) return false;
-        if (!Objects.equals(userName, user.userName)) return false;
-        if (!Objects.equals(password, user.password)) return false;
-        return Objects.equals(email, user.email);
+        return id == user.id && Objects.equals(givenName, user.givenName) && Objects.equals(familyName, user.familyName) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (givenName != null ? givenName.hashCode() : 0);
-        result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
+        return Objects.hash(id, givenName, familyName, username, password, email);
     }
 
     public int getId() {
@@ -65,8 +52,8 @@ public class User {
         return familyName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
