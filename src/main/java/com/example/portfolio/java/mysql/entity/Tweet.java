@@ -16,6 +16,11 @@ public class Tweet {
         this.userId = userId;
     }
 
+    public Tweet(String tweet, int userId) {
+        this.tweet = tweet;
+        this.userId = userId;
+    }
+
     public int getId() {
         return id;
     }

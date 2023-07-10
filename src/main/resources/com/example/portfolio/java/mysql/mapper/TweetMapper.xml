@@ -4,4 +4,8 @@
     <select id="findTweets" resultType="com.example.portfolio.java.mysql.entity.Tweet">
         SELECT * FROM tweets;
     </select>
+    <insert id="tweetRegister" parameterType="com.example.portfolio.java.mysql.entity.Tweet" useGeneratedKeys="true" keyProperty="id">
+        Insert Into tweets (tweet, created_at, user_id)
+        Values (#{tweet}, NOW(), #{userId});
+    </insert>
 </mapper>

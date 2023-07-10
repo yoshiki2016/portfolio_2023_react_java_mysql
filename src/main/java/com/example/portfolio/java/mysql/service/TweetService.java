@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TweetService {
     List<Tweet> findTweets();
+
+    Tweet tweetRegister(String tweet, int userId);
 }

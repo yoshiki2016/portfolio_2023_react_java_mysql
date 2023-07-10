@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/user/register")
-    public ResponseEntity<Map<String, String>> userRegister(@RequestBody UserForm userForm, UriComponentsBuilder uriBuilder) {
+        public ResponseEntity<Map<String, String>> userRegister(@RequestBody UserForm userForm, UriComponentsBuilder uriBuilder) {
         User user = userService.userRegister( userForm.getGivenName(), userForm.getFamilyName(),
                         userForm.getUserName(), userForm.getPassword(), userForm.getEmail() );
         URI url = uriBuilder

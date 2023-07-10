@@ -28,6 +28,7 @@ export const useAuth = () => {
       showMessage({ title: "ネットワークエラーが発生しました。", status: "error" });
     });
     setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { login, isLoading };
 };
