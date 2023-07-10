@@ -7,5 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface TweetMapper {
-    public List<Tweet> findTweets();
+    List<Tweet> findTweets();
+
+    void tweetRegister(Tweet tweet);
 }
