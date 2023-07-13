@@ -27,9 +27,8 @@ public class TweetController {
     }
 
     @GetMapping("/tweets")
-    public List<Tweet> findUsers() {
-        System.out.println("Tweets Read API呼び出し");
-        return tweetService.findTweets();
+    public List<TweetResponse> getTweets() {
+        return tweetService.getTweets();
     }
 
     @PostMapping("/tweet/register")

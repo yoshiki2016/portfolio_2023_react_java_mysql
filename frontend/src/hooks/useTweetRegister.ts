@@ -10,21 +10,23 @@ type Props = {
 export const useTweetRegister = () => {
   const { showMessage } = useMessage();
   const [isLoading, setIsLoading] = useState(false);
-  const tweetRegister = useCallback((props: Props) => {
+  const tweetRegister = useCallback(async (props: Props) => {
     setIsLoading(true);
     if (props.userId !== null) {
-      axios.post("http://localhost:8080/tweet/register", {
+      await axios.post("http://localhost:8080/tweet/register", {
         tweet: props.tweet,
         userId: props.userId
       }).then(() => {
         showMessage({ title: "ツイートしました。", status: "success" });
       }).catch(() => {
         showMessage({ title: "ネットワークエラーが発生しました。", status: "error" });
+      }).finally(() => {
+        setIsLoading(false);
       });
     } else {
       showMessage({ title: "不正なユーザーで投稿しないで下さい。", status: "error" });
+      setIsLoading(false);
     }
-    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { tweetRegister, isLoading };

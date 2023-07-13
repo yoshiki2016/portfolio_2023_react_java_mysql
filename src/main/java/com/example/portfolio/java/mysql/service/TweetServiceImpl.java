@@ -1,5 +1,6 @@
 package com.example.portfolio.java.mysql.service;
 
+import com.example.portfolio.java.mysql.controller.TweetResponse;
 import com.example.portfolio.java.mysql.entity.Tweet;
 import com.example.portfolio.java.mysql.form.TweetForm;
 import com.example.portfolio.java.mysql.mapper.TweetMapper;
@@ -16,8 +17,8 @@ public class TweetServiceImpl implements TweetService {
     }
 
     @Override
-    public List<Tweet> findTweets() {
-        return tweetMapper.findTweets();
+    public List<TweetResponse> getTweets(){
+        return tweetMapper.getTweets();
     }
 
     public Tweet tweetRegister(String tweet, int userId){
