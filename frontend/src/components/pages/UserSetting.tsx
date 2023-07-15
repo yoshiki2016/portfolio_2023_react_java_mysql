@@ -4,6 +4,7 @@ import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { useLoginUser } from "../../hooks/providers/useLoginUserProvider";
 import { IncorrectLogin } from "./IncorrectLogin";
 import { useUserGet } from "../../hooks/useUserGet";
+import { useUserUpdate } from "../../hooks/useUserUpdate";
 
 export const UserSetting: React.FC = memo(() => {
   const { loginUser } = useLoginUser();
@@ -32,16 +33,18 @@ export const UserSetting: React.FC = memo(() => {
   const handleGivenNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setGivenName(event.target.value); };
   const handleFamlyNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setFamilyName(event.target.value); };
   const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserName(event.target.value); };
-  const handleShowPasswordFlagChange = (event: any) => {
-    setPassword(""); setNewPassword("");
-    setShowPasswordFlag(!showPasswordFlag);
+  const handleShowPasswordFlagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(""); setNewPassword(""); setShowPasswordFlag(!showPasswordFlag);
   }
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value); };
   const handleNewPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setNewPassword(event.target.value); };
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); };
 
   // ユーザー情報更新
-  const onClickUserSetting = () => { alert("ユーザー設定") };
+  const { userUpdate, isUpdate } = useUserUpdate();
+  const onClickUserUpdate = () => {
+    userUpdate({ userId, givenName, familyName, userName, showPasswordFlag, password, newPassword, email });
+  };
   return (
     <>
       {loginFlag ? (
@@ -76,10 +79,7 @@ export const UserSetting: React.FC = memo(() => {
                     <Input type="password" value={newPassword} onChange={handleNewPasswordChange} />
                   </FormControl>
                 </>
-              ) : (
-                // 表示しない
-                <></>
-              )}
+              ) : (<></>)}
               <FormControl>
                 <FormLabel>Eメール</FormLabel>
                 <Input type="email" value={email} onChange={handleEmailChange} />
@@ -87,10 +87,11 @@ export const UserSetting: React.FC = memo(() => {
               <PrimaryButton
                 isDisabled={
                   familyName === "" || givenName === "" ||
-                  userName === "" || password === "" || email === ""
+                  userName === "" || email === "" ||
+                  (showPasswordFlag && (password === "" || newPassword === ""))
                 }
-                onClick={onClickUserSetting}
-                isLoading={isLoadingUser}>
+                onClick={onClickUserUpdate}
+                isLoading={isLoadingUser || isUpdate}>
                 ユーザー更新
               </PrimaryButton>
             </VStack>

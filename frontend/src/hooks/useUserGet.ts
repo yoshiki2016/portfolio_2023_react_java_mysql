@@ -9,8 +9,6 @@ export const useUserGet = () => {
   const [user, setUser] = useState<User>();
 
   const userGet = useCallback((props: number) => {
-    console.log("ユーザーID");
-    console.log(props);
     setIsLoadingUser(true);
     if (props !== 0) {
       axios.get<User>(`http://localhost:8080/user_setting/${props}`)
