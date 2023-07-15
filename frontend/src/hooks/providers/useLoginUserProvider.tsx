@@ -2,7 +2,7 @@ import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useStat
 
 // ログイン状態とログインユーザーのIDを持つ
 type LoginUser = {
-  userId: number | null;
+  userId: number;
   loginFlag: boolean;
 };
 
@@ -16,7 +16,7 @@ const LoginUserContext = createContext<LoginUserContextType>({} as LoginUserCont
 // ログインユーザーのIDとログイン状態を持つプロバイダー
 export const LoginUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<LoginUser>({ userId: null, loginFlag: false });
+  const [loginUser, setLoginUser] = useState<LoginUser>({ userId: 0, loginFlag: false });
   return (
     <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>
       {children}

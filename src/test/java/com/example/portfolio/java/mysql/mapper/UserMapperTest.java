@@ -80,4 +80,16 @@ public class UserMapperTest {
         // 後で作ったmovie5のidの方が大きいことを確認する。
         assertThat(user5.getId()).isGreaterThan(user4.getId());
     }
+
+    @Test
+    @DataSet(value = "user/userList.yml")
+    @ExpectedDataSet(value = "user/userUpdateList.yml")
+    @Transactional
+    public void user情報を更新出来ること(){
+        // パスワードを除いて更新出来ること
+        userMapper.updateUserWithoutPassword(1, "琴美2", "田中", "t_kotomi2", "abc@example.com");
+
+        // パスワードを含んで更新が出来ること
+        userMapper.updateUserWithPassword(2, "港一3", "河合", "k_kawai3", "P@ssword1!", "def@example.com");
+    }
 }

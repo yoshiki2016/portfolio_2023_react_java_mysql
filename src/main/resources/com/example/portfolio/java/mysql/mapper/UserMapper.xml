@@ -4,8 +4,24 @@
     <select id="login" resultType="com.example.portfolio.java.mysql.entity.User">
         Select * From users Where user_name=#{userName} And password=#{password};
     </select>
+    <select id="searchUser" resultType="com.example.portfolio.java.mysql.entity.User">
+        Select * From users Where id=#{userId} And password=#{password};
+    </select>
+    <select id="findUserById" parameterType="int" resultType="com.example.portfolio.java.mysql.entity.User">
+        Select * From users Where id=#{id};
+    </select>
     <insert id="userRegister" parameterType="com.example.portfolio.java.mysql.entity.User" useGeneratedKeys="true" keyProperty="id">
         Insert Into users (given_name, family_name, user_name, password, email)
             Values (#{givenName}, #{familyName}, #{userName}, #{password}, #{email});
     </insert>
+    <update id="updateUserWithPassword">
+        Update users Set given_name = #{givenName}, family_name =#{familyName},
+        user_name = #{userName}, password = #{newPassword}, email = #{email}
+        Where id = #{userId};
+    </update>
+    <update id="updateUserWithoutPassword">
+        Update users Set given_name = #{givenName}, family_name =#{familyName},
+        user_name = #{userName}, email = #{email}
+        Where id = #{userId};
+    </update>
 </mapper>
