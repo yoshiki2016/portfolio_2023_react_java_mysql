@@ -1,25 +1,28 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useLoginUser } from '../../hooks/providers/useLoginUserProvider';
 import { IncorrectLogin } from './IncorrectLogin';
-import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack } from '@chakra-ui/react';
+import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack, useDisclosure } from '@chakra-ui/react';
 import { SecondaryButton } from '../atoms/button/SecondaryButton';
 import { useTweetRegister } from '../../hooks/useTweetRegister';
-import { PrimaryButton } from '../atoms/button/PrimaryButton';
+import { useTweetsGet } from '../../hooks/useTweetsGet';
+import { MenuIconButton } from '../atoms/button/MenuIconButton';
+import { MenuDrawer } from '../molecules/MenuDrawer';
 
 export const Tweet: React.FC = memo(() => {
-  // テストデータ後で消す
-  const tweets = [
-    { id: 1, tweet: "Just had the most delicious sushi for lunch. 🍣🤤 Highly recommend trying it if you're a sushi lover like me! #foodie #sushi", createdAt: "2023-07-09 20:28:38", authorId: 1, authorName: "t_hanako" }, { id: 2, tweet: "Excited to announce the launch of our new website! 🚀🎉 It's been months of hard work, but it's finally live. Check it out and let us know what you think! #website #launch", createdAt: "2023-07-10 08:35:01", authorId: 2, authorName: "新屋良樹" }
-  ];
+  const [tweet, setTweet] = useState("");
+  const handleTweetChange = (event: any) => setTweet(event.target.value);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { loginUser } = useLoginUser();
   const { loginFlag, userId } = loginUser;
-  const [tweet, setTweet] = useState("");
-  const handleTweetChange = (event: any) => setTweet(event.target.value);
   const { tweetRegister, isLoading } = useTweetRegister();
+  const { tweetsGet, isLoadingTweet, tweets } = useTweetsGet();
+  const firstTweetsGet = () => tweetsGet();
+  useEffect(() => firstTweetsGet(), []);
   const onClickTweetRegister = () => {
     tweetRegister({ tweet, userId });
     setTweet('');
+    setTimeout(() => tweetsGet(), 1000);
   };
 
   return (
@@ -31,6 +34,7 @@ export const Tweet: React.FC = memo(() => {
               <Heading as="h1" size="lg">
                 Tweeterのクローン
               </Heading>
+              <MenuIconButton onOpen={onOpen} />
             </Flex>
             <Box bg="gray.50" p={4} rounded="md" mb={6} alignItems="center">
               <Textarea
@@ -43,11 +47,10 @@ export const Tweet: React.FC = memo(() => {
                 <SecondaryButton
                   isDisabled={tweet === ""}
                   onClick={onClickTweetRegister}
-                  isLoading={isLoading}
+                  isLoading={isLoading || isLoadingTweet}
                 >投稿する</SecondaryButton>
               </Center>
             </Box>
-            {/* 投稿されたTweet */}
             <VStack
               divider={<StackDivider borderColor="gray.200" />}
               spacing={4}
@@ -65,6 +68,7 @@ export const Tweet: React.FC = memo(() => {
               ))}
             </VStack>
           </Container>
+          <MenuDrawer isOpen={isOpen} onClose={onClose} />
         </>
       ) : (<IncorrectLogin />)}
     </>

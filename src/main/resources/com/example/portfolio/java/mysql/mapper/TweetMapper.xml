@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.portfolio.java.mysql.mapper.TweetMapper">
-    <select id="findTweets" resultType="com.example.portfolio.java.mysql.entity.Tweet">
-        SELECT * FROM tweets;
+    <select id="getTweets" resultType="com.example.portfolio.java.mysql.controller.TweetResponse">
+        Select
+            t.id, t.tweet, t.created_at,
+            t.user_id As author_id,
+            u.user_name As author_name
+        From tweets As t
+        Left Join users as u
+        On t.user_id = u.id;
     </select>
     <insert id="tweetRegister" parameterType="com.example.portfolio.java.mysql.entity.Tweet" useGeneratedKeys="true" keyProperty="id">
         Insert Into tweets (tweet, created_at, user_id)
