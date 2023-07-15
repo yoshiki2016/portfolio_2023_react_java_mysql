@@ -2,6 +2,7 @@ package com.example.portfolio.java.mysql.service;
 
 import com.example.portfolio.java.mysql.controller.LoginResponse;
 import com.example.portfolio.java.mysql.entity.User;
+import com.example.portfolio.java.mysql.exception.ResourceNotFoundException;
 import com.example.portfolio.java.mysql.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
             int userId = loginUser.get().getId();
             return new LoginResponse(userId, true);
         } else {
-            return new LoginResponse(null , false);
+            return new LoginResponse(0 , false);
         }
     }
 
@@ -32,5 +33,17 @@ public class UserServiceImpl implements UserService {
         User user = new User(givenName, familyName, userName, password, email);
         userMapper.userRegister(user);
         return user;
+    }
+
+    @Override
+    public User findUserById(int id){
+        Optional<User> user = userMapper.findUserById(id);
+        if(user.isPresent()){
+            // パスワードを空欄で返却する。
+            user.get().setPassword("");
+            return user.get();
+        } else {
+            throw new ResourceNotFoundException("resource not found");
+        }
     }
 }

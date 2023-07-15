@@ -30,10 +30,10 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void 指定のユーザーとパスワードがusersテーブルに存在しない時userIdにnullとloginFlagにfalseが入ってること() {
+    public void 指定のユーザーとパスワードがusersテーブルに存在しない時userIdに0とloginFlagにfalseが入ってること() {
         Mockito.doReturn(Optional.empty()).when(userMapper).login("r_asakawa", "Sr0LVDwX");
         LoginResponse actual = userServiceImpl.login("r_asakawa", "Sr0LVDwX");
-        assertThat(actual).isEqualTo(new LoginResponse(null, false));
+        assertThat(actual).isEqualTo(new LoginResponse(0, false));
     }
 
     @Test

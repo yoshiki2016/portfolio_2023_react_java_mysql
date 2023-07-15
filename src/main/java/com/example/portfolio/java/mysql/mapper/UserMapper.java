@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface UserMapper {
     Optional<User> login(String userName, String password);
     void userRegister(User user);
+
+    Optional<User> findUserById(int id);
 }

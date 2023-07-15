@@ -5,10 +5,7 @@ import com.example.portfolio.java.mysql.form.UserForm;
 import com.example.portfolio.java.mysql.form.LoginForm;
 import com.example.portfolio.java.mysql.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -38,5 +35,10 @@ public class UserController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "the user successfully created"));
+    }
+
+    @GetMapping("/user_setting/{id}")
+    public User findUserById(@PathVariable("id") int id){
+        return userService.findUserById(id);
     }
 }
