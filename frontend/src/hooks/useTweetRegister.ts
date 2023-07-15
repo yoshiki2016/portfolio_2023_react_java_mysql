@@ -4,16 +4,16 @@ import { useMessage } from "./useMessage";
 
 type Props = {
   tweet: string;
-  userId: number | null;
+  userId: number;
 }
 
 export const useTweetRegister = () => {
   const { showMessage } = useMessage();
   const [isLoading, setIsLoading] = useState(false);
-  const tweetRegister = useCallback(async (props: Props) => {
+  const tweetRegister = useCallback((props: Props) => {
     setIsLoading(true);
-    if (props.userId !== null) {
-      await axios.post("http://localhost:8080/tweet/register", {
+    if (props.userId !== 0) {
+      axios.post("http://localhost:8080/tweet/register", {
         tweet: props.tweet,
         userId: props.userId
       }).then(() => {

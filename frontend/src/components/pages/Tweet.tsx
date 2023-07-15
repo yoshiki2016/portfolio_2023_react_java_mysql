@@ -1,14 +1,17 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useLoginUser } from '../../hooks/providers/useLoginUserProvider';
 import { IncorrectLogin } from './IncorrectLogin';
-import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack } from '@chakra-ui/react';
+import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack, useDisclosure } from '@chakra-ui/react';
 import { SecondaryButton } from '../atoms/button/SecondaryButton';
 import { useTweetRegister } from '../../hooks/useTweetRegister';
 import { useTweetsGet } from '../../hooks/useTweetsGet';
+import { MenuIconButton } from '../atoms/button/MenuIconButton';
+import { MenuDrawer } from '../molecules/MenuDrawer';
 
 export const Tweet: React.FC = memo(() => {
   const [tweet, setTweet] = useState("");
   const handleTweetChange = (event: any) => setTweet(event.target.value);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { loginUser } = useLoginUser();
   const { loginFlag, userId } = loginUser;
@@ -19,7 +22,7 @@ export const Tweet: React.FC = memo(() => {
   const onClickTweetRegister = () => {
     tweetRegister({ tweet, userId });
     setTweet('');
-    tweetsGet();
+    setTimeout(() => tweetsGet(), 1000);
   };
 
   return (
@@ -31,6 +34,7 @@ export const Tweet: React.FC = memo(() => {
               <Heading as="h1" size="lg">
                 Tweeterのクローン
               </Heading>
+              <MenuIconButton onOpen={onOpen} />
             </Flex>
             <Box bg="gray.50" p={4} rounded="md" mb={6} alignItems="center">
               <Textarea
@@ -64,6 +68,7 @@ export const Tweet: React.FC = memo(() => {
               ))}
             </VStack>
           </Container>
+          <MenuDrawer isOpen={isOpen} onClose={onClose} />
         </>
       ) : (<IncorrectLogin />)}
     </>
