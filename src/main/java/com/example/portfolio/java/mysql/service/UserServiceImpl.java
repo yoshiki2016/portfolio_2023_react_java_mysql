@@ -46,4 +46,23 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("resource not found");
         }
     }
+
+    @Override
+    public void updateUser(int userId, String givenName, String familyName, String userName,
+                           Boolean showPasswordFlag, String password, String newPassword, String email){
+        // パスワードの更新有り
+        if(showPasswordFlag){
+            Optional<User> user = userMapper.searchUser(userId, password);
+            if(user.isPresent()){
+                // ユーザーIDとパスワードの組み合わせが合致するものがあればパスワード込みでアップデートする。
+                userMapper.updateUserWithPassword(userId, givenName, familyName, userName, newPassword, email);
+            } else {
+                throw new ResourceNotFoundException("resource not found");
+            }
+        }
+        // パスワードの更新無し
+        else{
+            userMapper.updateUserWithoutPassword(userId, givenName, familyName, userName, email);
+        }
+    };
 }

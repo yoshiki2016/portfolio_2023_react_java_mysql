@@ -13,4 +13,12 @@ public interface UserMapper {
     void userRegister(User user);
 
     Optional<User> findUserById(int id);
+
+    Optional<User> searchUser(int userId, String password);
+
+    void updateUserWithPassword(int userId, String givenName, String familyName,
+                                String userName, String newPassword, String email);
+
+    void updateUserWithoutPassword(int userId, String givenName, String familyName,
+                                String userName, String email);
 }
