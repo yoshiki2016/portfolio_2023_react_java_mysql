@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { Center, Checkbox, FormControl, FormLabel, Input, VStack } from "@chakra-ui/react";
+
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { useLoginUser } from "../../hooks/providers/useLoginUserProvider";
 import { IncorrectLogin } from "./IncorrectLogin";
@@ -22,7 +23,7 @@ export const UserSetting: React.FC = memo(() => {
   const { userGet, isLoadingUser, user } = useUserGet();
   useEffect(() => userGet(userId), []);
 
-  // user情報が取得されるまでuserの値がnullになるので、初期値を設定
+  // ログインユーザーの情報を設定
   useEffect(() => {
     if (user) {
       setGivenName(user.givenName); setFamilyName(user.familyName);
@@ -33,7 +34,7 @@ export const UserSetting: React.FC = memo(() => {
   const handleGivenNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setGivenName(event.target.value); };
   const handleFamlyNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setFamilyName(event.target.value); };
   const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserName(event.target.value); };
-  const handleShowPasswordFlagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleShowPasswordFlagChange = () => {
     setPassword(""); setNewPassword(""); setShowPasswordFlag(!showPasswordFlag);
   }
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value); };

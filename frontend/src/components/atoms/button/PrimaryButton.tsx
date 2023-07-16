@@ -18,7 +18,7 @@ export const PrimaryButton: FC<Props> = props => {
 
   return (
     <Button
-      bg="teal.400"
+      colorScheme="twitter"
       color="white"
       isDisabled={isDisabled || isLoading}
       isLoading={isLoading}

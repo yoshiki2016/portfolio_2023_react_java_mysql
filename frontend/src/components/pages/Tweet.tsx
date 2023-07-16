@@ -1,16 +1,17 @@
 import React, { memo, useEffect, useState } from 'react';
+import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack, useDisclosure } from '@chakra-ui/react';
+
 import { useLoginUser } from '../../hooks/providers/useLoginUserProvider';
 import { IncorrectLogin } from './IncorrectLogin';
-import { Avatar, Box, Center, Container, Flex, Heading, StackDivider, Text, Textarea, VStack, useDisclosure } from '@chakra-ui/react';
-import { SecondaryButton } from '../atoms/button/SecondaryButton';
 import { useTweetRegister } from '../../hooks/useTweetRegister';
 import { useTweetsGet } from '../../hooks/useTweetsGet';
 import { MenuIconButton } from '../atoms/button/MenuIconButton';
 import { MenuDrawer } from '../molecules/MenuDrawer';
+import { PrimaryButton } from '../atoms/button/PrimaryButton';
 
 export const Tweet: React.FC = memo(() => {
   const [tweet, setTweet] = useState("");
-  const handleTweetChange = (event: any) => setTweet(event.target.value);
+  const handleTweetChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => setTweet(event.target.value);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { loginUser } = useLoginUser();
@@ -36,7 +37,7 @@ export const Tweet: React.FC = memo(() => {
               </Heading>
               <MenuIconButton onOpen={onOpen} />
             </Flex>
-            <Box bg="gray.50" p={4} rounded="md" mb={6} alignItems="center">
+            <Box p={4} rounded="md" mb={6} alignItems="center">
               <Textarea
                 value={tweet}
                 onChange={handleTweetChange}
@@ -44,11 +45,11 @@ export const Tweet: React.FC = memo(() => {
                 mb={4}
               />
               <Center>
-                <SecondaryButton
+                <PrimaryButton
                   isDisabled={tweet === ""}
                   onClick={onClickTweetRegister}
                   isLoading={isLoading || isLoadingTweet}
-                >投稿する</SecondaryButton>
+                >投稿する</PrimaryButton>
               </Center>
             </Box>
             <VStack
@@ -61,7 +62,7 @@ export const Tweet: React.FC = memo(() => {
                   <Avatar size="sm" name={tweet.authorName} mr={3} />
                   <Box>
                     <Text fontWeight="bold">{tweet.authorName}</Text>
-                    <Text fontSize="sm" color="gray.500">{tweet.createdAt}</Text>
+                    <Text fontSize="sm" color="gray.500">{tweet.createdAt.replace("T", " ")}</Text>
                     <Text>{tweet.tweet}</Text>
                   </Box>
                 </Flex>

@@ -1,6 +1,7 @@
 import { memo, FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Center, Stack } from "@chakra-ui/react";
+
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
 export const Page404: FC = memo(() => {
