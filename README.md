@@ -27,9 +27,55 @@ Tweeterのクローンアプリになります。<br />
 - axios 1.4.0
 - Chakra UI 
 
+## 使用ツール
+|        ツール名        |     用途      |
+|:------------------:|:-----------:|
+|      InteliJ       | バックエンドの開発用  |
+| Visual Studio Code | フロントエンドの開発用 |
+|      Postman       | バックエンドのテスト用 |
+
+## アプリケーションの起動方法
+0.Java17, Node20.2.0, git, Dockerのインストール済ませてください。<br />
+1.コードをクローンする場所に移動する。
+```
+$ cd 任意のディレクトリー
+```
+2.コードをクローンする。
+```
+$ git clone https://github.com/yoshiki2016/portfolio_2023_react_java_mysql.git
+```
+3.クローンしたディレクトリーに移動する。
+```
+$ cd portfolio_2023_react_java_mysql
+```
+4.DockerのMySQLコンテナを立ち上げる。
+```
+$ cd docker
+$ docker compose up
+```
+5.Springを起動する。
+```
+$ cd portfolio_2023_react_java_mysql
+$ ./gradlew
+```
+6.Nodeのパッケージをインストールして、Nodeサーバー起動する。
+```
+$ cd portfolio_2023_react_java_mysql
+$ cd frontend
+$ npm i
+$ ls | grep node
+node_modules/
+$ npm run start
+```
+7.ブラウザを立ち上げて以下にアクセスする。
+```
+http://localhost:3000/
+```
+
 ## 今後の課題
 - RedisかAPI GateWayを使った認証にする。
 - Chakura UIを使ったデザインに関してスタイルの調整を出来るようにする。
 - バリデーションチェックをフロントとバックエンドに設ける。
+- フロントエンドに関して、async/awaitやpromisを理解し非同期処理の順番を制御出来るようにする。
 - Jestを使ったフロントエンドのテスト実装をする。
 - PHP、RubyでREST APIのCRUD処理とユニットテスト作成経験を積む。
