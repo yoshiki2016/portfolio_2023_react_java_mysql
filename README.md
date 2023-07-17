@@ -34,6 +34,55 @@ Tweeterのクローンアプリになります。<br />
 | Visual Studio Code | フロントエンドの開発用 |
 |      Postman       | バックエンドのテスト用 |
 
+## 概略図
+![Application diagram](images/app-diagram.png)
+
+## ディレクトリー構造
+```
+.
+├── java
+│   └── com
+│       └── example
+│           └── portfolio
+│               └── java
+│                   └── mysql
+│                       ├── Application.java
+│                       ├── controller
+│                       │   ├── LoginResponse.java
+│                       │   ├── TweetController.java
+│                       │   ├── TweetResponse.java
+│                       │   └── UserController.java
+│                       ├── entity
+│                       │   ├── Tweet.java
+│                       │   └── User.java
+│                       ├── exception
+│                       │   ├── CustomExceptionHandler.java
+│                       │   └── ResourceNotFoundException.java
+│                       ├── form
+│                       │   ├── LoginForm.java
+│                       │   ├── TweetForm.java
+│                       │   ├── UserForm.java
+│                       │   └── UserUpdateForm.java
+│                       ├── mapper
+│                       │   ├── TweetMapper.java
+│                       │   └── UserMapper.java
+│                       └── service
+│                           ├── TweetService.java
+│                           ├── TweetServiceImpl.java
+│                           ├── UserService.java
+│                           └── UserServiceImpl.java
+└── resources
+    ├── application.properties
+    └── com
+        └── example
+            └── portfolio
+                └── java
+                    └── mysql
+                        └── mapper
+                            ├── TweetMapper.xml
+                            └── UserMapper.xml
+```
+
 ## アプリケーションの起動方法
 0.Java17, Node20.2.0, git, Dockerのインストール済ませてください。<br />
 1.コードをクローンする場所に移動する。
