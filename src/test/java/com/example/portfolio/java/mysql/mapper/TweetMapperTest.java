@@ -50,7 +50,7 @@ public class TweetMapperTest {
     @Transactional
     public void ツイートの一覧が取得出来ること() {
         List<TweetResponse> tweetResponses = tweetMapper.getTweets();
-        LocalDateTime runDateTime = LocalDateTime.of(2023, 07, 17, 16, 9, 45);
+        LocalDateTime runDateTime = LocalDateTime.now();
         List<TweetResponse> expectResponses = List.of(
             new TweetResponse( 1, "ツイート1", runDateTime, 1, "k_kotomi"),
             new TweetResponse( 2, "ツイート2", runDateTime, 3, "y_moriyama"),
