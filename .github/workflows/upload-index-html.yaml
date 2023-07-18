@@ -16,11 +16,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Move work directory
-        run: cd ./apiSpecification
-
       - name: Up container
         run: |
+          cd ./apiSpecification
           pwd
           ls
           docker compose up -d
