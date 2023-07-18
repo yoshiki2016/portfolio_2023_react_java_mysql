@@ -23,7 +23,7 @@ jobs:
         run: docker compose up -d
 
       - name: Exec aglio
-        run: docker compose exec api aglio -i md/user-api.md -o docs/index.html
+        run: docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
 
       - name: Commit files
         run: |
