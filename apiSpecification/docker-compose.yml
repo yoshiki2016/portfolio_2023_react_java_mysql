@@ -9,4 +9,3 @@ services:
       - ".:/projects"
     tty: true
     command: aglio -i ./md/tweet-api.md -s -h 0.0.0.0
-
