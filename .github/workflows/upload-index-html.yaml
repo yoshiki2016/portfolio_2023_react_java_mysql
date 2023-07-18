@@ -5,7 +5,11 @@ name: Upload Index.html
 on:
   pull_request:
     paths:
-      - 'apiSpecification/md/user-api.md'
+      - 'apiSpecification/md/tweet-api.md'
+
+defaults:
+  run:
+    working-directory: apiSpecification
 
 jobs:
   build:
@@ -16,14 +20,11 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Move work directory
-        run: cd ./apiSpecification
-
       - name: Up container
         run: docker compose up -d
 
       - name: Exec aglio
-        run: docker compose exec api aglio -i md/user-api.md -o docs/index.html
+        run: docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
 
       - name: Commit files
         run: |
