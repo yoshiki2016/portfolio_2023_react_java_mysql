@@ -1,5 +1,5 @@
 FORMAT: 1A
-# ユーザー管理API仕様書(テスト)
+# ユーザー管理API仕様書(サンプル)
 
 # Group Users
 
