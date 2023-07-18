@@ -20,7 +20,10 @@ jobs:
         run: cd ./apiSpecification
 
       - name: Up container
-        run: docker compose up -d
+        run: |
+          pwd
+          ls
+          docker compose up -d
 
       - name: Exec aglio
         run: docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
