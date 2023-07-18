@@ -21,15 +21,10 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Up container
-        run: |
-          pwd
-          docker compose up -d
+        run: docker compose up -d
 
       - name: Exec aglio
-        run: |
-          pwd
-          ls -R
-          docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
+        run: docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
 
       - name: Commit files
         run: |
