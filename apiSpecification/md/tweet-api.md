@@ -11,22 +11,21 @@ FORMAT: 1A
 + password (string) - パスワード
 
 + Request (application/json)
-
         {
           "userName": "t_hanako",
           "password": "Abc12345"
         }
 
-ログインに成功した場合
-+ Response 201 (application/json)
+### ログインに成功した場合
++ Response 200 (application/json)
   + Body
         {
           "userId": 1,
           "loginFlag": true
         }
 
-ログインに失敗した場合
-+ Response 201 (application/json)
+### ログインに失敗した場合
++ Response 200 (application/json)
     + Body
       {
       "userId": 0,
