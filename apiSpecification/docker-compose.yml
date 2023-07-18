@@ -8,5 +8,5 @@ services:
     volumes:
       - ".:/projects"
     tty: true
-    command: aglio -i ./md/user-api.md -s -h 0.0.0.0
+    command: aglio -i ./md/tweet-api.md -s -h 0.0.0.0
 
