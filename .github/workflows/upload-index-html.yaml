@@ -5,7 +5,7 @@ name: Upload Index.html
 on:
   pull_request:
     paths:
-      - 'apiSpecification/md/user-api.md'
+      - 'apiSpecification/md/tweet-api.md'
 
 jobs:
   build:
