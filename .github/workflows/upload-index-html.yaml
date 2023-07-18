@@ -7,6 +7,10 @@ on:
     paths:
       - 'apiSpecification/md/tweet-api.md'
 
+defaults:
+  run:
+    working-directory: apiSpecification
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +22,13 @@ jobs:
 
       - name: Up container
         run: |
-          cd ./apiSpecification
+          pwd
           docker compose up -d
 
       - name: Exec aglio
         run: |
-          cd ./apiSpecification
+          pwd
+          ls -R
           docker compose exec api aglio -i md/tweet-api.md -o docs/index.html
 
       - name: Commit files
