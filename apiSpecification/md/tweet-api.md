@@ -1,49 +1,38 @@
 FORMAT: 1A
-# ユーザー管理API仕様書(サンプル)
+# tweeterクローンAPI仕様書
 
 # Group Users
 
-## POST /users
-ユーザーを登録します。
+## POST /user/login
+ログイン処理を実行します。
 以下のパラメータをJSON形式で送信します。
 
-+ name (string, required) - ユーザー名。255文字以内。
-+ birthdate (string, required) - 生年月日。yyyy-MM-dd形式。未来日付は不可。
++ userName (string) - アカウント名
++ password (string) - パスワード
 
 + Request (application/json)
 
         {
-          "name": "yoshihito koyama",
-          "bithdate": "2022-01-01"
+          "userName": "t_hanako",
+          "password": "Abc12345"
         }
 
+ログインに成功した場合
 + Response 201 (application/json)
   + Body
         {
-          "id": 1,
-          "message": "user successfully created"
+          "userId": 1,
+          "loginFlag": true
         }
 
-+ Response 400
-  + Body
-        [
-          {
-            "field":"name",
-            "messages":[
-                "cannot be empty",
-                "maximum length is 255"
-            ]
-          },
-          {
-            "field":"birthdate",
-            "messages":[
-                "cannot be null",
-                "format should be yyyy-MM-dd",
-                "cannot set future date"
-            ]
-          }
-        ]
-
+ログインに失敗した場合
++ Response 201 (application/json)
+    + Body
+      {
+      "userId": 0,
+      "loginFlag": false
+      }
+ 
 ## GET /users/{id}
 
 idに指定したユーザーの情報を取得します。
