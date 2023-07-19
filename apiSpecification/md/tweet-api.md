@@ -16,16 +16,16 @@ FORMAT: 1A
     "password": "Abc12345"
   }
 
-## ログインに成功した場合
 + Response 200 (application/json)
+  ログインに成功した場合
   + Body
     {
       "userId": 1,
       "loginFlag": true
     }
 
-## ログインに失敗した場合
 + Response 200 (application/json)
+  ログインに失敗した場合
   + Body
     {
       "userId": 0,
@@ -91,3 +91,4 @@ idに指定したユーザーの情報を取得します。
   "message": "resource not found"
 }
 ```
+
