@@ -12,25 +12,187 @@ FORMAT: 1A
 
 + Request (application/json)
         {
-          "userName": "t_hanako",
-          "password": "Abc12345"
+          "userName": "t_hanako",    
+          "password": "Abc12345"    
+        }    
+
++ Response 200 (application/json)
+  ログインに成功した場合
+  + Body
+        {
+          "userId": 1,
+          "loginFlag": true
         }
 
-## ログインに成功した場合
++ Response 200 (application/json)
+  ログインに失敗した場合
+  + Body
+        {
+          "userId": 0,
+          "loginFlag": false
+        }
+
+## POST /user/register
+ユーザーの登録処理をします。
+以下のパラメータをJSON形式で送信します。
+
++ givenName (string) - 名字
++ familyName (string) - 名前
++ userName (string) - ユーザー名
++ password (string) - パスワード
++ email (string) - Eメールアドレス
+
++ Request (application/json)
+        {
+          "givenName": "サンプル",  
+          "familyName": "花子",
+          "userName": "h_sample",  
+          "password": "Abc12345",  
+          "email": "abc@sample.com"  
+        }  
+
++ Response 201 (application/json)
+  + Body
+        {
+          "message": "the user successfully created"
+        }
+
+
+## GET /user_setting/{id}
+idに指定したユーザーの情報を取得します。
++ Parameters
+  + id: 1 (number) - ユーザーのID
+
 + Response 200 (application/json)
   + Body
-    {
-      "userId": 1,
-      "loginFlag": true
-    }
+        {
+          "id": 1,
+          "givenName": "サンプル",
+          "familyName": "花子"
+          "userName": "h_sample",
+          "password": "",
+          "email": "abc@sample.com"
+        }
 
-## ログインに失敗した場合
++ Response 404 (application/json)
+  + Body
+        {
+          "error": "Not Found",
+          "timestamp": "2023-07-19T11:25:12.017870+09:00\[Asia/Tokyo\]",
+          "message": "resource not found",
+          "status": "404",
+          "path": "/user_setting/10"
+        }
+
+## PATCH /user_setting
+idに指定したユーザーの情報を更新します。<br>
+パスワードの更新がある場合、パスワードの更新が無い場合で別の処理になります。
+
++ userId (number) - ユーザーID
++ givenName (string) - 名字
++ familyName (string) - 名前
++ userName (string) - ユーザー名
++ showPasswordFlag (boolean) - パスワード更新フラグ
++ password (string) - パスワード
++ newPassword (string) - 新パスワード
++ email (string) - Eメールアドレス
+
++ Request (application/json)
+        {
+          "userId": 1,  
+          "givenName": "山下",  
+          "familyName": "花子",  
+          "userName": "y_sample",  
+          "showPasswordFlag": false,  
+          "password": "",  
+          "newPassword": "",  
+          "email": "efg@sample.com"  
+        }  
+
 + Response 200 (application/json)
-    + Body
-      {
-      "userId": 0,
-      "loginFlag": false
-      }
+  + Body
+        {
+          "message": "the user successfully updated"
+        }
+
++ Request (application/json)
+        {
+          "userId": 1,    
+          "givenName": "山下",    
+          "familyName": "花子",    
+          "userName": "y_sample",    
+          "showPasswordFlag": true,    
+          "password": "Abc12345",    
+          "newPassword": "P@ssword1!",    
+          "email": "efg@sample.com"    
+        }    
+
++ Response 200 (application/json)
+  + Body
+        passwordとuserIdのペアがusersテーブルに存在する場合更新成功
+        {
+          "message": "the user successfully updated"
+        }
+
++ Response 404 (application/json)
+  + Body
+        passwordとuserIdのペアがusersテーブルに存在しない場合更新失敗
+        {
+          "error": "Not Found",
+          "timestamp": "2023-07-19T11:25:12.017870+09:00\[Asia/Tokyo\]",
+          "message": "resource not found",
+          "status": "404",
+          "path": "/user_setting"
+        }
+
+# Group Tweet
+## GET /tweets
+ツイートの一覧を取得します。
+
++ Response 200 (application/json)
+  + Body
+        \[
+          {
+            "id": 1,
+            "tweet": "田中花子初Tweet",
+            "createdAt": "2023-07-14T00:04:57",
+            "authorId": 1,
+            "authorName": "t_hanako",
+          },
+          {
+            "id": 2,
+            "tweet": "React.js楽しい",
+            "createdAt": "2023-07-14T00:04:57",
+            "authorId": 3,
+            "authorName": "s_yoshiki",
+          },
+          {
+            "id": 3,
+            "tweet": "Java楽しい",
+            "createdAt": "2023-07-14T00:04:57",
+            "authorId": 2,
+            "authorName": "y_tarou",
+          }
+        \]
+
+## POST /tweet/register
+ツイートの登録処理をします。
+以下のパラメータをJSON形式で送信します。
+
++ tweet (string) - ツイート
++ userId (number) - ユーザーID
+
++ Request (application/json)
+        {
+          "tweet": "投稿する",  
+          "userId": 1  
+        }  
+
++ Response 201 (application/json)
+  + Body
+        {
+          "message": "the tweet successfully created"
+        }
 
 # Group Common
 
