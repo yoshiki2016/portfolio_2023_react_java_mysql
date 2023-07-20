@@ -61,11 +61,12 @@ FORMAT: 1A
 ## GET /user_setting/{id}
 idに指定したユーザーの情報を取得します。
 + Parameters
-  + id (number) - ユーザーのID
+  + id: 1 (number) - ユーザーのID
 
 + Response 200 (application/json)
   + Body
     {
+      "id": 1,
       "givenName": "サンプル",
       "familyName": "花子"
       "userName": "h_sample",
