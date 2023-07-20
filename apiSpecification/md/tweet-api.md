@@ -11,10 +11,10 @@ FORMAT: 1A
 + password (string) - パスワード
 
 + Request (application/json)
-  {
-    "userName": "t_hanako",
-    "password": "Abc12345"
-  }
+        {
+          "userName": "t_hanako",    
+          "password": "Abc12345"    
+        }    
 
 + Response 200 (application/json)
   ログインに成功した場合
