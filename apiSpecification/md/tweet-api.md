@@ -45,7 +45,7 @@ FORMAT: 1A
 + Request (application/json)
         {
           "givenName": "サンプル",  
-          "familyName": "花子"  
+          "familyName": "花子",
           "userName": "h_sample",  
           "password": "Abc12345",  
           "email": "abc@sample.com"  
@@ -161,14 +161,14 @@ idに指定したユーザーの情報を更新します。<br>
           },
           {
             "id": 2,
-            "tweet": "サンプル",
+            "tweet": "React.js楽しい",
             "createdAt": "2023-07-14T00:04:57",
             "authorId": 3,
             "authorName": "s_yoshiki",
           },
           {
             "id": 3,
-            "tweet": "サンプル",
+            "tweet": "Java楽しい",
             "createdAt": "2023-07-14T00:04:57",
             "authorId": 2,
             "authorName": "y_tarou",
