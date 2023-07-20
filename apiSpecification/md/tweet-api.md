@@ -175,6 +175,25 @@ idに指定したユーザーの情報を更新します。<br>
       }
     \]
 
+## POST /tweet/register
+ツイートの登録処理をします。
+以下のパラメータをJSON形式で送信します。
+
++ tweet (string) - ツイート
++ userId (number) - ユーザーID
+
++ Request (application/json)
+  {
+    "tweet": "投稿する",
+    "userId": 1
+  }
+
++ Response 201 (application/json)
+  + Body
+    {
+      "message": "the tweet successfully created"
+    }
+
 # Group Common
 
 ## 存在しないエンドポイントへのアクセス
