@@ -99,14 +99,14 @@ idに指定したユーザーの情報を更新します。<br>
 
 + Request (application/json)
   {
-  "userId": 1,
-  "givenName": "山下",
-  "familyName": "花子",
-  "userName": "y_sample",
-  "showPasswordFlag": false,
-  "password": "",
-  "newPassword": "",
-  "email": "efg@sample.com"
+    "userId": 1,
+    "givenName": "山下",
+    "familyName": "花子",
+    "userName": "y_sample",
+    "showPasswordFlag": false,
+    "password": "",
+    "newPassword": "",
+    "email": "efg@sample.com"
   }
 
 + Response 200 (application/json)
@@ -117,14 +117,14 @@ idに指定したユーザーの情報を更新します。<br>
 
 + Request (application/json)
   {
-  "userId": 1,
-  "givenName": "山下",
-  "familyName": "花子",
-  "userName": "y_sample",
-  "showPasswordFlag": true,
-  "password": "Abc12345",
-  "newPassword": "P@ssword1!",
-  "email": "efg@sample.com"
+    "userId": 1,
+    "givenName": "山下",
+    "familyName": "花子",
+    "userName": "y_sample",
+    "showPasswordFlag": true,
+    "password": "Abc12345",
+    "newPassword": "P@ssword1!",
+    "email": "efg@sample.com"
   }
 
 + Response 200 (application/json)
@@ -144,6 +144,36 @@ idに指定したユーザーの情報を更新します。<br>
       "status": "404",
       "path": "/user_setting"
     }
+
+# Group Tweet
+## GET /tweets
+ツイートの一覧を取得します。
+
++ Response 200 (application/json)
+  + Body
+    \[
+      {
+        "id": 1,
+        "tweet": "田中花子初Tweet",
+        "createdAt": "2023-07-14T00:04:57",
+        "authorId": 1,
+        "authorName": "t_hanako",
+      },
+      {
+        "id": 2,
+        "tweet": "サンプル",
+        "createdAt": "2023-07-14T00:04:57",
+        "authorId": 3,
+        "authorName": "s_yoshiki",
+      },
+      {
+        "id": 3,
+        "tweet": "サンプル",
+        "createdAt": "2023-07-14T00:04:57",
+        "authorId": 2,
+        "authorName": "y_tarou",
+      }
+    \]
 
 # Group Common
 
