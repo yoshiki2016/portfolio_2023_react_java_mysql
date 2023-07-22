@@ -1,30 +1,30 @@
-DROP TABLE IF EXISTS tweets;
-DROP TABLE IF EXISTS users;
+Drop Table If Exists tweets;
+Drop Table If Exists users;
 
-CREATE TABLE users (
+Create Table users (
   id int unsigned AUTO_INCREMENT,
-  given_name VARCHAR(100) NOT NULL,
-  family_name VARCHAR(100) NOT NULL,
-  user_name VARCHAR(100) NOT NULL,
-  password VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  given_name Varchar(100) Not Null,
+  family_name Varchar(100) Not Null,
+  user_name Varchar(100) Not Null,
+  password Varchar(100) Not Null,
+  email Varchar(100) Not Null,
   PRIMARY KEY(id)
 );
-INSERT INTO users (id, given_name, family_name, user_name, password, email) VALUES (1, '花子', '田中', 't_hanako', 'Abc12345', 'abc@gmail.com');
-INSERT INTO users (id, given_name, family_name, user_name, password, email) VALUES (2, '太郎', '山田', 'y_tarou', 'Abc12345', 'efg@gimail.com');
-INSERT INTO users (id, given_name, family_name, user_name, password, email) VALUES (3, '良樹', '新屋', 's_yoshiki', 'Abc12345', '123@gmail.com');
+Insert Into users (id, given_name, family_name, user_name, password, email) Values (1, '花子', '田中', 't_hanako', 'Abc12345', 'abc@gmail.com');
+Insert Into users (id, given_name, family_name, user_name, password, email) Values (2, '太郎', '山田', 'y_tarou', 'Abc12345', 'efg@gimail.com');
+Insert Into users (id, given_name, family_name, user_name, password, email) Values (3, '良樹', '新屋', 's_yoshiki', 'Abc12345', '123@gmail.com');
 
-CREATE TABLE tweets (
+Create Table tweets (
   id int unsigned AUTO_INCREMENT,
-  tweet VARCHAR(500) NOT NULL,
-  created_at DATETIME NOT NULL,
-  user_id int unsigned NOT NULL,
-  PRIMARY KEY(id),
-  CONSTRAINT fk_user_id
-  FOREIGN KEY (user_id)
-  REFERENCES users (id)
-  ON DELETE RESTRICT ON UPDATE CASCADE
+  tweet Varchar(500) Not Null,
+  created_at Datetime Not Null,
+  user_id int unsigned Not Null,
+  Primary Key(id),
+  Constraint fk_user_id
+  Foreign Key (user_id)
+  References users (id)
+  On Delete Restrict On Update Cascade
 );
-INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (1, '田中花子初Tweet', NOW(), 3);
-INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (2, 'React.js楽しい', NOW(), 1);
-INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (3, 'Java楽しい', NOW(), 2);
+Insert Into tweets (id, tweet, created_at, user_id) Values (1, '田中花子初Tweet', NOW(), 3);
+Insert Into tweets (id, tweet, created_at, user_id) Values (2, 'React.js楽しい', NOW(), 1);
+Insert Into tweets (id, tweet, created_at, user_id) Values (3, 'Java楽しい', NOW(), 2);
