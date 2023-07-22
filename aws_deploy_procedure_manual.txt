@@ -287,3 +287,7 @@ Starting the development server...
                total        used        free      shared  buff/cache   available
 Mem:            3828        1556        1648           8         623        2040
 Swap:              0           0           0
+
+# ブラウザで以下のURLにアクセス
+# EC2_IP : EC2インスタンスのIPアドレスを指定
+<EC2_IP>:3000
