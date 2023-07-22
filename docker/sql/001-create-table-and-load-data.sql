@@ -25,6 +25,6 @@ CREATE TABLE tweets (
   REFERENCES users (id)
   ON DELETE RESTRICT ON UPDATE CASCADE
 );
-INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (1, '田中花子初Tweet', NOW(), 1);
+INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (1, '田中花子初Tweet', NOW(), 3);
 INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (2, 'React.js楽しい', NOW(), 1);
-INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (3, 'Java楽しい', NOW(), 1);
+INSERT INTO tweets (id, tweet, created_at, user_id) VALUES (3, 'Java楽しい', NOW(), 2);
