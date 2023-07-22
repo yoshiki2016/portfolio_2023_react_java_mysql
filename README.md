@@ -33,9 +33,16 @@ Tweeterのクローンアプリになります。<br />
 |      InteliJ       | バックエンドの開発用  |
 | Visual Studio Code | フロントエンドの開発用 |
 |      Postman       | バックエンドのテスト用 |
+|   GitHub Action    |  API仕様書作成用  |
+
+## ER図
+![ER diagram](images/portfolio_db.png)
 
 ## 概略図
 ![Application diagram](images/app-diagram.png)
+
+## 成果物
+### [Tweeterクローンアプリ API仕様書](https://yoshiki2016.github.io/portfolio_2023_react_java_mysql/apiSpecification/docs/)
 
 ## ディレクトリー構造
 ```
@@ -124,6 +131,7 @@ http://localhost:3000/
 ## 今後の課題
 - RedisかAPI GateWayを使った認証にする。
 - Chakura UIを使ったデザインに関してスタイルの調整を出来るようにする。
+- ログイン処理で失敗した際のHTTP Statusを401か403に変える。
 - バリデーションチェックをフロントとバックエンドに設ける。
 - フロントエンドに関して、async/awaitやpromisを理解し非同期処理の順番を制御出来るようにする。
 - Jestを使ったフロントエンドのテスト実装をする。
