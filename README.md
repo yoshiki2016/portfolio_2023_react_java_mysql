@@ -42,7 +42,7 @@ Tweeterのクローンアプリになります。<br />
 ![Application diagram](images/app-diagram.png)
 
 ## 成果物
-### [Tweeterクローンアプリ API仕様書](apiSpecification/docs/index.html)
+### [Tweeterクローンアプリ API仕様書](https://yoshiki2016.github.io/portfolio_2023_react_java_mysql/apiSpecification/docs/)
 
 ## ディレクトリー構造
 ```
