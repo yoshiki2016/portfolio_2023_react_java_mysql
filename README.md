@@ -128,6 +128,9 @@ $ npm run start
 http://localhost:3000/
 ```
 
+## AWS へのデプロイ
+### [AWSデプロイ手順](aws_deploy_procedure_manual.txt)
+
 ## 今後の課題
 - RedisかAPI GateWayを使った認証にする。
 - Chakura UIを使ったデザインに関してスタイルの調整を出来るようにする。
