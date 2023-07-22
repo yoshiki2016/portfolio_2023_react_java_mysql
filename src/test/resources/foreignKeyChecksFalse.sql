@@ -1,2 +1,2 @@
-SET foreign_key_checks = 0;
+Set foreign_key_checks = 0;
 
