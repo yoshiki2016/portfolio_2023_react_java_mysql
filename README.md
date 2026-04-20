@@ -107,7 +107,7 @@ $ tmux
 ※tmuxに関しては、以下のURLを参照
 https://zenn.dev/azunasu/articles/25d9999ca0fb96
 ```
-4.DockerのMySQLコンテナを立ち上げる。
+4.Docker Desktop を起動して、DockerのMySQLコンテナを立ち上げる。
 ```
 $ cd docker
 $ docker compose up
