@@ -91,7 +91,7 @@ Tweeterのクローンアプリになります。<br />
 ```
 
 ## アプリケーションの起動方法
-0.Java17, Node20.2.0, git, Dockerのインストール済ませてください。<br />
+0.Java17, Node20.2.0, git, Docker, tmuxのインストール済ませてください。※tmuxの使い方は各自調べてください<br />
 1.コードをクローンする場所に移動する。
 ```
 $ cd 任意のディレクトリー
@@ -100,9 +100,12 @@ $ cd 任意のディレクトリー
 ```
 $ git clone https://github.com/yoshiki2016/portfolio_2023_react_java_mysql.git
 ```
-3.クローンしたディレクトリーに移動する。
+3.クローンしたディレクトリーに移動後に、tmux詳細は各自調べてください。
 ```
 $ cd portfolio_2023_react_java_mysql
+$ tmux
+※tmuxに関しては、以下のURLを参照
+https://zenn.dev/azunasu/articles/25d9999ca0fb96
 ```
 4.DockerのMySQLコンテナを立ち上げる。
 ```
@@ -112,7 +115,7 @@ $ docker compose up
 5.Springを起動する。
 ```
 $ cd portfolio_2023_react_java_mysql
-$ ./gradlew
+$ ./gradlew bootRun
 ```
 6.Nodeのパッケージをインストールして、Nodeサーバー起動する。
 ```
